@@ -1,0 +1,22 @@
+{
+  "name": "vue-use-localstorage-easy",
+  "version": "0.0.1",
+  "description": "vue3, 简单同步localStorage.",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "vue",
+    "use",
+    "localStorage"
+  ],
+  "author": "ludongmin",
+  "license": "ISC",
+  "dependencies": {
+    "vue": "^3.0.0-beta.1"
+  },
+  "devDependencies": {
+    "typescript": "^3.8.3"
+  }
+}
