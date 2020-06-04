@@ -26,3 +26,19 @@ npm i vue-use-localstorage-easy --save
 ```
 import useLocalstorage from 'vue-use-localstorage-easy'
 ```
+
+### 目前计划加入
+
+- 基础
+  [ ] vue-use-boolean-easy
+  [ ] vue-use-select-easy
+  [ ] vue-use-keypress-easy
+  [ ] vue-use-mouse-easy
+
+- 储存
+  [x] vue-use-localstorage-easy
+
+- echarts
+  [ ] vue-use-echarts-easy
+
+...暂且先这样
