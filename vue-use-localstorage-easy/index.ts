@@ -1,23 +1,23 @@
-import { ref, onMounted, watch } from 'vue'
+import { ref, onMounted, watch } from "vue";
 
-export default (key: string, initValue: any) => {
-  const item = ref(localStorage.getItem(key))
-  if (typeof key !== 'string') {
-    console.error('第一个参数必须是string类型！')
+export const useLocalStorage = (key: string, initValue: any) => {
+  const item = ref(localStorage.getItem(key));
+  if (typeof key !== "string") {
+    console.error("第一个参数必须是string类型！");
   }
 
   watch(
     () => item.value,
     () => {
-      localStorage.setItem(key, item.value)
-    }
-  )
+      localStorage.setItem(key, item.value);
+    },
+  );
 
   onMounted(() => {
     if (item.value === undefined || item.value === null) {
-      item.value = initValue
+      item.value = initValue;
     }
-  })
+  });
 
-  return [item]
-}
+  return [item];
+};

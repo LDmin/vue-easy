@@ -48,7 +48,7 @@ export default {
 
 ### 考虑加入的功能
 
-[ ] 可 reset 为初始值
+- [ ] 可 reset 为初始值
 
 ## Authors 关于作者
 
