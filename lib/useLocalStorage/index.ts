@@ -1,21 +1,50 @@
-import { ref, onMounted, watch } from 'vue'
+import { ref, onMounted, watch, Ref } from 'vue'
 
-const useLocalStorage = (key: string, initValue: any) => {
-  const item = ref(localStorage.getItem(key))
+export interface useLocalStorageOption {
+  isJson?: boolean
+  initValue?: any
+}
+
+const useLocalStorage = <T = any>(
+  key: string,
+  option?: useLocalStorageOption
+) => {
+  const item = ref(localStorage.getItem(key)) as Ref<any>
   if (typeof key !== 'string') {
     console.error('第一个参数必须是string类型！')
   }
 
   watch(
     () => item.value,
-    () => {
-      localStorage.setItem(key, item.value)
+    (value) => {
+      console.log(1111)
+
+      if (value === undefined) {
+        localStorage.removeItem(key)
+      } else if (option.isJson) {
+        localStorage.setItem(key, JSON.stringify(value))
+      } else {
+        localStorage.setItem(key, value as string)
+      }
     }
   )
 
   onMounted(() => {
-    if (item.value === undefined || item.value === null) {
-      item.value = initValue
+    let value: string | object = ''
+    if (item.value === undefined) {
+      value = option?.initValue
+    } else {
+      value = item.value
+    }
+
+    if (option.isJson) {
+      try {
+        item.value = JSON.parse(value as string)
+      } catch (e) {
+        console.error(e)
+      }
+    } else {
+      item.value = value
     }
   })
 
