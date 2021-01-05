@@ -32,7 +32,7 @@ const useLocalStorage = <T = any>(
   onMounted(() => {
     let value: string | object = ''
     if (item.value === undefined) {
-      value = option?.initValue
+      value = option && option.initValue
     } else {
       value = item.value
     }

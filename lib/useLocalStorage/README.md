@@ -1,19 +1,4 @@
-# vue3-setup
-
-vue3 简单钩子。欢迎提出建议或者 bug。
-[github](https://github.com/LDmin/vue3-setup.git)
-
-### Installation 安装
-
-npm install:
-
-```sh
-npm i vue3-setup --save
-```
-
 ### Usage example 使用示例
-
-#### 1. useLocalstorage
 
 ```
 <template>
