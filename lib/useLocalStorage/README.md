@@ -27,7 +27,7 @@ export default defineComponent({
 
 #### option
 
-| 属性 | 类型 | 默认值 |
-| ：----- | ------| ：--： |
-| isJson | boolean | false |
-| initValue | any | |
+| 属性      | 类型    | 默认值 |
+| --------- | ------- | ------ |
+| isJson    | boolean | false  |
+| initValue | any     | 无     |
