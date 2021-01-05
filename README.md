@@ -36,4 +36,4 @@ export default defineComponent({
 </script>
 ```
 
-打开 localStorage, 修改输入框的值，对应的打开 localStorage 值也相应改变。
+打开 localStorage, 修改输入框的值，对应的 localStorage 值也相应改变。
