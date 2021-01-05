@@ -24,6 +24,7 @@ export default defineComponent({
 ```
 
 打开 localStorage, 修改输入框的值，对应的 localStorage 值也相应改变。值设置成 undefined 即可删除。
+如果想删除值，只需设置为 undefined 即可，此时不应该设置初始值 initValue。
 
 #### option
 
