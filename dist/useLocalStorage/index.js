@@ -1,39 +1,44 @@
-import { ref, onMounted, watch } from 'vue';
+import { ref, reactive, watch } from 'vue';
 const useLocalStorage = (key, option) => {
-    const item = ref(localStorage.getItem(key));
-    if (typeof key !== 'string') {
-        console.error('第一个参数必须是string类型！');
-    }
-    watch(() => item.value, (value) => {
-        if (value === undefined) {
-            localStorage.removeItem(key);
-        }
-        else if (option.isJson) {
-            localStorage.setItem(key, JSON.stringify(value));
+    const getInitValue = () => {
+        if (localStorage.getItem(key) === null) {
+            localStorage.setItem(key, option.initValue);
+            return option.initValue;
         }
         else {
-            localStorage.setItem(key, value);
+            return localStorage.getItem(key);
         }
-    });
-    onMounted(() => {
-        let value = '';
-        if (item.value === undefined) {
-            value = option && option.initValue;
+    };
+    const getJsonValue = () => {
+        if (localStorage.getItem(key) === null) {
+            localStorage.setItem(key, JSON.stringify(option.initValue));
+            return option.initValue;
         }
         else {
-            value = item.value;
-        }
-        if (option.isJson) {
             try {
-                item.value = JSON.parse(value);
+                return JSON.parse(localStorage.getItem(key));
             }
             catch (e) {
                 console.error(e);
             }
+            return '';
+        }
+    };
+    const item = option.isJson ? reactive(getJsonValue()) : ref(getInitValue());
+    watch(() => item, () => {
+        if (option.isJson) {
+            localStorage.setItem(key, JSON.stringify(item));
         }
         else {
-            item.value = value;
+            if (item.value === undefined) {
+                localStorage.removeItem(key);
+            }
+            else {
+                localStorage.setItem(key, item.value);
+            }
         }
+    }, {
+        deep: true,
     });
     return [item];
 };

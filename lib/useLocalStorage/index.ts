@@ -1,4 +1,4 @@
-import { ref, onMounted, watch, Ref } from 'vue'
+import { ref, reactive, watch } from 'vue'
 
 export interface useLocalStorageOption {
   isJson?: boolean
@@ -9,42 +9,46 @@ const useLocalStorage = <T = any>(
   key: string,
   option?: useLocalStorageOption
 ) => {
-  const item = ref(localStorage.getItem(key)) as Ref<any>
-  if (typeof key !== 'string') {
-    console.error('第一个参数必须是string类型！')
-  }
-
-  watch(
-    () => item.value,
-    (value) => {
-      if (value === undefined) {
-        localStorage.removeItem(key)
-      } else if (option.isJson) {
-        localStorage.setItem(key, JSON.stringify(value))
-      } else {
-        localStorage.setItem(key, value as string)
-      }
-    }
-  )
-
-  onMounted(() => {
-    let value: string | object = ''
-    if (item.value === undefined) {
-      value = option && option.initValue
+  const getInitValue = () => {
+    if (localStorage.getItem(key) === null) {
+      localStorage.setItem(key, option.initValue)
+      return option.initValue
     } else {
-      value = item.value
+      return localStorage.getItem(key)
     }
-
-    if (option.isJson) {
+  }
+  const getJsonValue = () => {
+    if (localStorage.getItem(key) === null) {
+      localStorage.setItem(key, JSON.stringify(option.initValue))
+      return option.initValue
+    } else {
       try {
-        item.value = JSON.parse(value as string)
+        return JSON.parse(localStorage.getItem(key))
       } catch (e) {
         console.error(e)
       }
-    } else {
-      item.value = value
+      return ''
     }
-  })
+  }
+  const item = option.isJson ? reactive(getJsonValue()) : ref(getInitValue())
+
+  watch(
+    () => item,
+    () => {
+      if (option.isJson) {
+        localStorage.setItem(key, JSON.stringify(item))
+      } else {
+        if (item.value === undefined) {
+          localStorage.removeItem(key)
+        } else {
+          localStorage.setItem(key, item.value)
+        }
+      }
+    },
+    {
+      deep: true,
+    }
+  )
 
   return [item]
 }
