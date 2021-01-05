@@ -1,44 +1,18 @@
-# vue-easy
+# vue3-setup
 
-一组 vue3 的简单的工具集，也可单独安装使用。0.x 版本不建议在生产环境中使用，等 vue3 正式发布后，将跟进退出 1.0 版本。
-[github](https://github.com/LDmin/vue-easy)
+参考 ahooks 的做成的 vue3 简单钩子。
+[github](https://github.com/LDmin/vue3-setup.git)
 
 ### Installation 安装
 
 npm install:
 
 ```sh
-npm i vue-easy --save
+npm i vue3-setup --save
 ```
 
 ### Usage example 使用示例
 
 ```
-import useLocalstorage from 'vue-easy/vue-use-localstorage-easy'
+import { useLocalstorage } from 'vue3-setup'
 ```
-
-### 也可单独安装使用
-
-```
-npm i vue-use-localstorage-easy --save
-```
-
-```
-import useLocalstorage from 'vue-use-localstorage-easy'
-```
-
-### 目前计划加入
-
-- 基础
--  [ ] vue-use-boolean-easy
--  [ ] vue-use-select-easy
--  [ ] vue-use-keypress-easy
--  [ ] vue-use-mouse-easy
-
-- 储存
--  [x] vue-use-localstorage-easy
-
-- echarts
--  [ ] vue-use-echarts-easy
-
-...暂且先这样

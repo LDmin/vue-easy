@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "module": "ES2015",
+    "target": "ESNext",
+    "baseUrl": "./lib",
+    "declaration": true,
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "node",
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitReturns": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "noUnusedLocals": true,
+    "experimentalDecorators": true,
+    "outDir": "./dist"
+  },
+  "include": [
+    "./**/*.ts",
+  ],
+  "exclude": [
+    "node_modules",
+    "./dist"
+  ]
+}

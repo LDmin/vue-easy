@@ -1,0 +1,29 @@
+{
+  "name": "vue3-setup",
+  "version": "1.0.0",
+  "description": "一些参考ahooks的钩子",
+  "main": "./dist/index.js",
+  "dependencies": {
+    "vue": "^3.0.5"
+  },
+  "devDependencies": {
+    "typescript": "^4.1.3"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LDmin/vue3-setup.git"
+  },
+  "keywords": [
+    "vue3",
+    "hooks"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LDmin/vue3-setup/issues"
+  },
+  "homepage": "https://github.com/LDmin/vue3-setup#readme"
+}
