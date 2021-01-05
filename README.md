@@ -1,6 +1,6 @@
 # vue3-setup
 
-参考 ahooks 的做成的 vue3 简单钩子。
+vue3 简单钩子。欢迎提出建议或者 bug。
 [github](https://github.com/LDmin/vue3-setup.git)
 
 ### Installation 安装
@@ -13,6 +13,27 @@ npm i vue3-setup --save
 
 ### Usage example 使用示例
 
+#### 1. useLocalstorage
+
 ```
-import { useLocalstorage } from 'vue3-setup'
+<template>
+  <input type="text" v-model="name" />
+</template>
+
+<script lang="ts">
+import { defineComponent } from 'vue'
+import { useLocalStorage } from 'vue3-setup'
+
+export default defineComponent({
+  name: 'App',
+  setup() {
+    const [name] = useLocalStorage('name', '默认值')
+    return {
+      name,
+    }
+  },
+})
+</script>
 ```
+
+打开 localStorage, 修改输入框的值，对应的打开 localStorage 值也相应改变。
