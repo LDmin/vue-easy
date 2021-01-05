@@ -17,8 +17,6 @@ const useLocalStorage = <T = any>(
   watch(
     () => item.value,
     (value) => {
-      console.log(1111)
-
       if (value === undefined) {
         localStorage.removeItem(key)
       } else if (option.isJson) {

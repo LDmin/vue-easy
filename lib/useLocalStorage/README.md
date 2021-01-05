@@ -3,6 +3,8 @@
 ```
 <template>
   <input type="text" v-model="name" />
+  <button @click="name = '李四'">设置成李四</button>
+  <button @click="name = undefined">删除 name</button>
 </template>
 
 <script lang="ts">
@@ -12,7 +14,7 @@ import { useLocalStorage } from 'vue3-setup'
 export default defineComponent({
   name: 'App',
   setup() {
-    const [name] = useLocalStorage('name', '默认值')
+    const [name] = useLocalStorage('name', '张三')
     return {
       name,
     }
@@ -21,4 +23,11 @@ export default defineComponent({
 </script>
 ```
 
-打开 localStorage, 修改输入框的值，对应的 localStorage 值也相应改变。
+打开 localStorage, 修改输入框的值，对应的 localStorage 值也相应改变。值设置成 undefined 即可删除。
+
+#### option
+
+| 属性 | 类型 | 默认值 |
+| ：----- | ------| ：--： |
+| isJson | boolean | false |
+| initValue | any | |

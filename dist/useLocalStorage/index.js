@@ -1,11 +1,10 @@
 import { ref, onMounted, watch } from 'vue';
-var useLocalStorage = function (key, option) {
-    var item = ref(localStorage.getItem(key));
+const useLocalStorage = (key, option) => {
+    const item = ref(localStorage.getItem(key));
     if (typeof key !== 'string') {
         console.error('第一个参数必须是string类型！');
     }
-    watch(function () { return item.value; }, function (value) {
-        console.log(1111);
+    watch(() => item.value, (value) => {
         if (value === undefined) {
             localStorage.removeItem(key);
         }
@@ -16,8 +15,8 @@ var useLocalStorage = function (key, option) {
             localStorage.setItem(key, value);
         }
     });
-    onMounted(function () {
-        var value = '';
+    onMounted(() => {
+        let value = '';
         if (item.value === undefined) {
             value = option && option.initValue;
         }
